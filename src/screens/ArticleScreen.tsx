@@ -1,40 +1,25 @@
-import {
-  // Card,
-  // CardItem,
-  Container,
-  Content,
-  // DeckSwiper,
-  // Footer,
-  // FooterTab,
-  Tab,
-  // TabHeading,
-  Tabs,
-  // Text,
-  // Thumbnail,
-  // ScrollableTab,
-  // View,
-} from "native-base";
 import * as React from "react";
-import HeaderComponent from "../components/HeaderComponent";
-import ListComponent from "../components/ListComponent";
+import {
+  View,
+  Text,
+  StyleSheet,
+} from 'react-native';
 
-export default class TopScreen extends React.Component {
-  render() {
-    return (
-      <Container>
-        <HeaderComponent />
-        <Content>
-          <Tabs initialPage={1}>
-            <Tab heading="SS">
-            </Tab>
-            <Tab heading="総合">
-              <ListComponent />
-            </Tab>
-            <Tab heading="DR">
-            </Tab>
-          </Tabs>
-        </Content>
-      </Container>
-    );
-  }
-}
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  linkText: {
+    fontSize: 32,
+    color: 'rgb(95, 177, 237)',
+  },
+});
+
+const ArticleScreen = () => (
+  <View style={styles.container}>
+    <Text>ArticleScreen</Text>
+  </View>
+);
+export default ArticleScreen;

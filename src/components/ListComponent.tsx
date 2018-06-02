@@ -6,6 +6,9 @@ import {
   Text,
 } from "native-base";
 import * as React from "react";
+import {
+  Actions,
+} from 'react-native-router-flux';
 
 class ListComponent extends React.Component<any, any> {
   constructor(props: any) {
@@ -41,7 +44,7 @@ class ListComponent extends React.Component<any, any> {
     return (
       <List dataArray={this.state.rss}
         renderRow={(rss) =>
-          <ListItem>
+          <ListItem onPress={Actions.ArticleScreen}>
             <Thumbnail square size={80} source={{ uri: rss.thumbnail }} />
             <Body>
               <Text>{ rss.title }</Text>
