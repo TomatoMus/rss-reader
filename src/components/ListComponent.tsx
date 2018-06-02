@@ -11,45 +11,40 @@ class ListComponent extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
     this.state = {
-      threads: []
+      rss: []
     }
+    this.setRss = this.setRss.bind(this);
+  }
+
+  setRss(json: any) {
+    this.setState({
+      rss: json.items
+    });
   }
 
   componentWillMount() {
-    // fetch("http://jojosoku.com/feed")
-    // .then((response) => response.json())
-    // .then((responseJson) => {
-    //   let threads = responseJson.data.children
-    //   threads = threads.map(i => {
-    //     console.log(i.data.url)
-    //     // i.key = i.data.url
-    //     // state = { threads_url: i.data.url }
-    //     return i
-    //   })
-    //   this.setState({
-    //     threads: threads
-    //   });
-    // })
-    // .catch((error) => {
-    //   console.error(error);
-    // });
-    // Feed.load('http://jojosoku.com/feed', (err: any, rss: any) => {
-    //   console.log(rss);
-    // });
+    const parseUrl = 'https://api.rss2json.com/v1/api.json?rss_url=';
+    const rssUrl = 'http://jojosoku.com/feed';
+    fetch(parseUrl + rssUrl)
+    .then(response => response.json())
+    .then((json) => {
+      if (json.status === 'ok') {
+        console.log(json);
+        this.setRss(json);
+      }else {
+        console.log("failed");
+      }
+    });
   }
 
   render() {
     return (
-      <List dataArray={this.state.threads}
-        renderRow={(thread) =>
+      <List dataArray={this.state.rss}
+        renderRow={(rss) =>
           <ListItem>
-            <Thumbnail square size={80} source={{ uri: 'Image URL' }} />
+            <Thumbnail square size={80} source={{ uri: rss.thumbnail }} />
             <Body>
-              // <Text>{thread.data.url}</Text>
-              <Text>hoge</Text>
-                // <Text note>{this.state.threads[0].data.url}</Text>
-                // console.log(this.state.threads[0])
-              }
+              <Text>{ rss.title }</Text>
             </Body>
           </ListItem>
         }>
