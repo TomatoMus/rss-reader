@@ -1,49 +1,22 @@
-import {
-  // Card,
-  // CardItem,
-  Container,
-  Content,
-  // DeckSwiper,
-  // Footer,
-  // FooterTab,
-  Tab,
-  // TabHeading,
-  Tabs,
-  // Text,
-  // Thumbnail,
-  // ScrollableTab,
-  // View,
-} from "native-base";
 import * as React from "react";
-// import { Image } from "react-native";
-import HeaderComponent from "../components/HeaderComponent";
-import ListComponent from "../components/ListComponent";
+import {
+  Scene,
+  Router,
+  Actions
+} from 'react-native-router-flux';
 
-// const cards: Array<{image: any, name: string, text: string}> = [
-//   {
-//     image: require("../public/img/mazesoba.png"),
-//     name: "One",
-//     text: "Card One",
-//   },
-// ];
+import TopScreen from "./TopScreen";
+import ArticleScreen from "./ArticleScreen";
+
+const scenes = Actions.create(
+  <Scene key="root">
+    <Scene key="TopScreen" initial component={TopScreen} title="TopScreen" hideNavBar={true} />
+    <Scene key="ArticleScreen" component={ArticleScreen} title="ArticleScreen" />
+  </Scene>
+);
 
 export default class App extends React.Component {
   render() {
-    return (
-      <Container>
-        <HeaderComponent />
-        <Content>
-          <Tabs initialPage={1}>
-            <Tab heading="SS">
-            </Tab>
-            <Tab heading="総合">
-              <ListComponent />
-            </Tab>
-            <Tab heading="DR">
-            </Tab>
-          </Tabs>
-        </Content>
-      </Container>
-    );
+    return <Router scenes={scenes}/>
   }
 }
