@@ -1,25 +1,23 @@
 import * as React from "react";
 import {
-  View,
-  Text,
-  StyleSheet,
+  WebView,
 } from 'react-native';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  linkText: {
-    fontSize: 32,
-    color: 'rgb(95, 177, 237)',
-  },
-});
+class ArticleScreen extends React.Component<any, any> {
+  constructor(props: any) {
+    super(props);
+    this.state = {
+    }
+  }
 
-const ArticleScreen = () => (
-  <View style={styles.container}>
-    <Text>ArticleScreen</Text>
-  </View>
-);
+  render() {
+    return (
+      <WebView
+        source={{uri: this.props.link}}
+        style={{marginTop: 20}}
+      />
+    )
+  }
+};
+
 export default ArticleScreen;
