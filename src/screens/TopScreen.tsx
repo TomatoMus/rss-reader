@@ -2,7 +2,7 @@ import {
   // Card,
   // CardItem,
   Container,
-  Content,
+  // Content,
   // DeckSwiper,
   // Footer,
   // FooterTab,
@@ -12,7 +12,7 @@ import {
   // Text,
   // Thumbnail,
   // ScrollableTab,
-  // View,
+  View,
 } from "native-base";
 import * as React from "react";
 import HeaderComponent from "../components/HeaderComponent";
@@ -23,7 +23,7 @@ export default class TopScreen extends React.Component {
     return (
       <Container>
         <HeaderComponent />
-        <Content>
+        <View style={{flex: 1}}>
           <Tabs initialPage={1}>
             <Tab heading="SS">
             </Tab>
@@ -33,7 +33,7 @@ export default class TopScreen extends React.Component {
             <Tab heading="DR">
             </Tab>
           </Tabs>
-        </Content>
+        </View>
       </Container>
     );
   }
